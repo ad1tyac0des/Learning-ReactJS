@@ -20,9 +20,11 @@ function Card() {
             image: "https://images.unsplash.com/photo-1609921205586-7e8a57516512?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             title: "Apple iPhone",
             description: "Premium design, powerful performance, and unmatched ecosystem.",
-            inStock: false
+            inStock: true
         }
     ]
+
+    const handleClick = () => alert("Added To Cart!")
 
     return (
         <div className="w-full min-h-screen bg-zinc-300 flex items-center justify-center flex-wrap gap-5 py-10">
@@ -34,7 +36,7 @@ function Card() {
                     <div className="w-full h-1/2 px-4 py-5">
                         <h2 className='text-xl font-semibold leading-tight'>{elem.title}</h2>
                         <p className='text-lg text-gray-600 font-normal leading-none mt-5'>{elem.description}</p>
-                        <button className={`px-4 py-1 ${elem.inStock ? "bg-green-500" : "bg-red-500"} text-zinc-200 text-sm mt-5 rounded`}>
+                        <button onClick={elem.inStock ? handleClick : null} className={`px-4 py-1 ${elem.inStock ? "bg-green-500" : "bg-red-500"} text-zinc-200 text-sm mt-5 rounded`}>
                             {elem.inStock ? "In Stock" : "Out of Stock"}
                         </button>
                     </div>
