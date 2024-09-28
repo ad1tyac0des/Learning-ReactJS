@@ -1,16 +1,13 @@
-import React, { useState } from "react";
-// import Card from "./Components/Card";
-
+import React, { useState } from 'react'
 function App() {
-    const [score, setScore] = useState(0);
+    const [banned, setBanned] = useState(false)
+
     return (
-        <div className="p-10">
-            <h1 className="text-xl font-semibold">Score: {score}</h1>
-            <button onClick={() => setScore(score+10)} className="px-2 py-1 bg-blue-500 text-white rounded mt-5">
-                Add More
-            </button>
+        <div className='p-10'>
+            <h1 className={`text-lg font-semibold ${banned ? 'text-red-500' : 'text-green-500'}`}>{banned ? 'Banned' : 'Not Banned'}</h1>
+            <button onClick={()=> setBanned(!banned)} className={`px-6 py-1 text-white rounded-full text-lg mt-10 bg-red-500`}>Ban</button>
         </div>
-    );
+    )
 }
 
-export default App;
+export default App
