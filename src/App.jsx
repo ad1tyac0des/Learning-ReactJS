@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from 'react'
+import Card1 from './Components/Card1.jsx'
 
 function App() {
-    const [val, setVal] = useState({name: "harsh", age: 12})
-
     return (
-        <div className="p-5">
-            <h1 className="font-semibold text-lg">{val.gender}</h1>
-            <button onClick={()=> setVal({...val, gender: "male"})} className="px-3 py-1 bg-sky-500 text-white rounded">Add Gender</button>
+        <div>
+            <Card1 />
         </div>
     )
 }
 
-export default App;
+export default App
