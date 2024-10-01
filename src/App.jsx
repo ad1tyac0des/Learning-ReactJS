@@ -1,20 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 function App() {
-    const [val, setVal] = useState({name: "Electron777", isBanned: true})
-
+    const [val, setVal] = useState([1, 2, 3, 4, 5, 6]);
     return (
-        <div className='w-full h-screen flex flex-col items-center justify-center'>
-            <div className='w-56 px-4 py-2 border-2 border-zinc-200 inline-block text-center'>
-                <h1 className='font-semibold text-xl'>{val.name}</h1>
-                <h1 className='font-semibold text-xl'>{val.isBanned ? "Banned!😔" : "Unbanned😁"}</h1>
-            </div>
-            <button onClick={()=> setVal({...val, isBanned: !val.isBanned})} className={`px-3 py-1 ${val.isBanned ? 'bg-blue-500' : 'bg-red-500'} text-white font-bold rounded-sm mt-5 block`}>
-                {val.isBanned ? 'Unban Account' : 'Ban Account'}
+        <div className="p-10">
+            <button
+                onClick={() =>
+                    setVal(val.filter((item, index) => index !== val.length - 1))
+                }
+                className="px-3 py-1 bg-blue-500 rounded mb-5 text-white font-semibold"
+            >
+                Remove Last Element
             </button>
-            
+            {val.map((elem, index) => (
+                <h1 className="font-semibold" key={index}>
+                    {elem}
+                </h1>
+            ))}
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
