@@ -1,9 +1,11 @@
 import React from 'react'
-import SlideImage from './Components/SlideImage'
+import Button from './Components/Button'
+
 function App() {
     return (
         <div>
-            <SlideImage></SlideImage>
+            <Button text="Know More" color="bg-blue-500"/>
+            <Button text="Download" color="bg-red-500"/>
         </div>
     )
 }
