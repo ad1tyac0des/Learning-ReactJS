@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Card2 from './Components/Card2'
 
 function App() {
-    const data = [
+    const raw = [
         {
             name: "Linus Torvalds",
             profession: "Linux Founder",
@@ -29,16 +29,16 @@ function App() {
         }
     ]
 
-    const [realData, setRealData] = useState(data)
+    const [data, setData] = useState(raw);
 
-    const handleFriendsButton = (index) => {
-        setRealData((prev) => prev.map((item, i) => i===index ? {...item, friends: !item.friends} : item))
+    const handleClick = (cardIndex) => {
+        setData((prev)=> prev.map((item, i) => i === cardIndex ? {...item, friends: !item.friends} : item))
     }
 
     return (
-        <div className='w-full h-screen bg-zinc-300 flex items-center justify-center gap-5'>
-            {realData.map((item, index) => (
-                <Card2 key={index} values={item} handleClick = {handleFriendsButton} cardIndex = {index} />
+        <div className='w-full h-screen bg-zinc-300 flex items-center justify-center gap-10'>
+            {data.map((item, index) => (
+                <Card2 key={index} values = {item} handleClick={handleClick} index={index} />
             ))}
         </div>
     )
