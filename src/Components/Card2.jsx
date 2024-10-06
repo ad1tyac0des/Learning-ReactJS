@@ -12,7 +12,7 @@ function Card2({values, handleClick, index}) {
             <div className='p-3'>
                 <h1 className='text-xl font-semibold'>{name}</h1>
                 <h4 className='text-sm'>{profession}</h4>
-                <button onClick={()=> handleClick(index)} className={`px-2 py-1 bg-${friends ? 'green' : 'blue'}-500 text-white text-sm rounded mt-7`}>{friends ? 'Friends!' : 'Add to Friend'}</button>
+                <button onClick={()=> handleClick(index)} className={`px-2 py-1 ${friends ? 'bg-green-500' : 'bg-blue-500'} text-white text-sm rounded mt-7`}>{friends ? 'Friends!' : 'Add to Friend'}</button>
             </div>
         </div>
     )

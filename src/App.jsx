@@ -1,47 +1,53 @@
-import React, { useState } from 'react'
-import Card2 from './Components/Card2'
+import React, { useState } from "react";
+import Navbar from "./Components/Navbar";
+import MusicCard from "./Components/MusicCard";
 
 function App() {
-    const raw = [
+    const data = [
         {
-            name: "Linus Torvalds",
-            profession: "Linux Founder",
-            image: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR2a8LLjkXzYOMMMUVGQES3mrBHRxb5cyHW7DNzxnt7aVRkHItR",
-            friends: false
+            image:
+                "https://images.unsplash.com/photo-1727200449974-5221973023d0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            name: "Sunset Landscape",
+            artist: "John Smith",
+            favourite: false,
         },
         {
-            name: "Tim Berners-Lee",
-            profession: "W3 Founder",
-            image: "https://www.w3.org/2017/04/Timbl-medium.jpg",
-            friends: false
+            image:
+                "https://images.unsplash.com/photo-1727718271959-26ac20c4e389?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            name: "Cityscape at Night",
+            artist: "Jane Doe",
+            favourite: false,
         },
         {
-            name: "John McCarthy",
-            profession: "AI Founder",
-            image: "https://news.stanford.edu/__data/assets/image/0025/81178/Mccarthy_portrait_news.jpeg",
-            friends: false
+            image:
+                "https://images.unsplash.com/photo-1727279523741-0b483e90e842?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            name: "Abstract Art",
+            artist: "Alice Johnson",
+            favourite: false,
         },
         {
-            name: "Ryan Dahl",
-            profession: "Node JS Founder",
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmG_3KFw7lgKpn7Y-dnvYIXVhrMCW7NXXLey_0m3UtOYTqACLUitRcfdgtDmH81V9N--oNk-oqWub3R4EmeRnCjQI79nj90nbRChltAgFkcq1kzL4YrwxFc41J5eLyv9bbQGjAC_GKQvxmaW8flRr9FGLJkBAt33kkHPSRr0PfvA3XfhNqLFa0jT0cnA/s1024/5163818182_a163592497_b.jpeg",
-            friends: false
-        }
-    ]
+            image:
+                "https://images.unsplash.com/photo-1727774477390-2c1d534a28e2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            name: "Portrait of a Woman",
+            artist: "Bob Williams",
+            favourite: false,
+        },
+    ];
 
-    const [data, setData] = useState(raw);
+    const [songData, setSongData] = useState(data);
 
-    const handleClick = (cardIndex) => {
-        setData((prev)=> prev.map((item, i) => i === cardIndex ? {...item, friends: !item.friends} : item))
-    }
+    const handleClick = (index) => setSongData((prev) => prev.map((item, i) => i === index ? {...item, favourite: !item.favourite} : item))
 
     return (
-        <div className='w-full h-screen bg-zinc-300 flex items-center justify-center gap-10'>
-            {data.map((item, index) => (
-                <Card2 key={index} values = {item} handleClick={handleClick} index={index} />
-            ))}
+        <div className="w-full h-screen bg-zinc-300">
+            <Navbar data={songData} />
+            <div className="w-full px-20 flex gap-10 justify-between flex-wrap">
+                {songData.map((item, index)=> (
+                    <MusicCard key={index} values={item} handleClick={handleClick} index = {index}/>
+                ))}
+            </div>
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
