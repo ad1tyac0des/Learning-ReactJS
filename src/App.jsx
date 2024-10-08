@@ -1,16 +1,24 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useState } from 'react'
+import UserCards from './Components/UserCards'
+import CreateCard from './Components/CreateCard'
 
 function App() {
-    const {register, handleSubmit} = useForm()
-    
+    const [users, setUsers] = useState([]);
+
+    const handleFormSubmitData = (data) => {
+        setUsers([...users, data])
+    }
+
+    const removeUser = (id) => {
+        setUsers(users.filter((user, index) => id != index))
+    }
+
     return (
-        <div>
-            <form action="" onSubmit={handleSubmit(data => console.log(data))}>
-                <input {...register('name')} type="text" placeholder='Name' />
-                <input {...register('email')} type="email" placeholder='Email' />
-                <input type="submit" />
-            </form>
+        <div className='w-full h-screen bg-zinc-300 flex items-center justify-center'>
+            <div className="container mx-auto">
+                <UserCards removeUser={removeUser}  users={users} />
+                <CreateCard handleFormSubmitData={handleFormSubmitData} />
+            </div>
         </div>
     )
 }
