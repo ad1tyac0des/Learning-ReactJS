@@ -1,21 +1,19 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 
 function App() {
 
-    const name = useRef(null);
-    const age = useRef(null);
+    const [val, setVal] = useState({name: "", email: ""})
 
-    const handleSubmit = (event)=> {
-        event.preventDefault()
-        console.log(name.current.value)
-        console.log(age.current.value)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(val)
     }
 
     return (
-        <form className='p-4 flex gap-5' action="" onSubmit={handleSubmit}>
-            <input ref={name} className='border border-zinc-700 outline-none px-2' placeholder='Name' type="text" />
-            <input ref={age} className='border border-zinc-700 outline-none px-2' placeholder='Age' type="text" />
-            <input className='px-5 border border-zinc-700 cursor-pointer' type="submit" value="Submit" />
+        <form action="" className='p-5 flex flex-col gap-4' onSubmit={handleSubmit}>
+            <input onChange={(e)=> setVal({...val, name: e.target.value})} className='px-2 py-1 w-fit outline-none border border-black' type="text" placeholder='Enter Name' />
+            <input onChange={(e)=> setVal({...val, email: e.target.value})} className='px-2 py-1 w-fit outline-none border border-black' type="email" placeholder='Enter Email' />
+            <input className='px-2 py-1 w-fit outline-none border border-black cursor-pointer' type="submit" value="Submit" />
         </form>
     )
 }
